@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using Nest;
 
 namespace Twitter
 {
@@ -30,8 +31,23 @@ namespace Twitter
             services.AddSingleton(new MongoClient(connectionString));
             // Регистрация сервиса PostService
             services.AddScoped<IPostService, PostService>();
+            // Регистрация сервиса UserService
+            services.AddScoped<IUserService, UserService>();
             // Другие сервисы и настройки
             services.AddControllers();
+
+
+
+            services.Configure<ElasticsearchOptions>(Configuration.GetSection("Elasticsearch"));
+
+            var elasticsearchConfig = Configuration.GetSection("Elasticsearch").Get<ElasticsearchOptions>();
+
+            var settings = new ConnectionSettings(new Uri(elasticsearchConfig.Url))
+                .DefaultIndex(elasticsearchConfig.DefaultIndex);
+
+            var elasticClient = new ElasticClient(settings);
+
+            services.AddSingleton<IElasticsearchService>(new ElasticsearchService(elasticClient));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

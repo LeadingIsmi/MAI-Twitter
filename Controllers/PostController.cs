@@ -17,7 +17,6 @@ namespace Twitter.Controllers
         public PostController(IPostService postService)
         {
             _postService = postService;
-            //_postService = postService ?? throw new ArgumentNullException(nameof(postService));
         }
 
         // Создание нового поста

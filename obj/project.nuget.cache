@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GWvD8DZNhPImgMNb9+7mz7nUR31aiKHCU6DWxme5NiUR2v3of0hOo5TsTVMKHx4hUOiwL17oKaOQph9eL+GXsw==",
+  "dgSpecHash": "eS5DbWi5tEcyfai7JtbLbPZo/0Bsj8KoYWOjd7Ephd+Dh23Y9OJcNgF61dYlW6u8e3ETBtTrAMNc05Bn5V+HdQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Черный Плащ\\source\\repos\\Twitter\\Twitter.csproj",
   "expectedPackageFiles": [
@@ -27,6 +27,7 @@
     "C:\\Users\\Черный Плащ\\.nuget\\packages\\mongodb.driver\\2.23.1\\mongodb.driver.2.23.1.nupkg.sha512",
     "C:\\Users\\Черный Плащ\\.nuget\\packages\\mongodb.driver.core\\2.23.1\\mongodb.driver.core.2.23.1.nupkg.sha512",
     "C:\\Users\\Черный Плащ\\.nuget\\packages\\mongodb.libmongocrypt\\1.8.0\\mongodb.libmongocrypt.1.8.0.nupkg.sha512",
+    "C:\\Users\\Черный Плащ\\.nuget\\packages\\mstest.testframework\\3.1.1\\mstest.testframework.3.1.1.nupkg.sha512",
     "C:\\Users\\Черный Плащ\\.nuget\\packages\\nest\\7.17.5\\nest.7.17.5.nupkg.sha512",
     "C:\\Users\\Черный Плащ\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
     "C:\\Users\\Черный Плащ\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",

@@ -16,9 +16,7 @@ namespace Twitter
         void CreatePost(string content);
         IEnumerable<Post> GetAllPosts();
         Post GetPostById(string postId);
-        User GetUserById(string userId);
         void UpdatePost(string postId, string updatedContent);
-        void UpdateUserProfile(string userId, string updatedName, int updatedAge);
         void DeletePost(string postId);
         void DeleteComment(string commentId);
         void DeleteAllPosts();
@@ -35,6 +33,7 @@ namespace Twitter
         {
             var database = mongoClient.GetDatabase("Twitter_DB");
             _postCollection = database.GetCollection<Post>("Posts");
+            _userCollection = database.GetCollection<User>("User");
         }
 
         // Создание новых постов (Create):
@@ -58,29 +57,12 @@ namespace Twitter
             return post;
         }
 
-        // Пример для пользователя
-        public User GetUserById(string userId)
-        {
-            var user = _userCollection.Find(u => u.UserId == userId).FirstOrDefault();
-            return user;
-        }
-
         // Обновление информации о профилях (Update):
         public void UpdatePost(string postId, string updatedContent)
         {
             var filter = Builders<Post>.Filter.Eq(p => p.PostId, postId);
             var update = Builders<Post>.Update.Set(p => p.Content, updatedContent);
             _postCollection.UpdateOne(filter, update);
-        }
-
-        // Пример для пользователя
-        public void UpdateUserProfile(string userId, string updatedName, int updatedAge)
-        {
-            var filter = Builders<User>.Filter.Eq(u => u.UserId, userId);
-            var update = Builders<User>.Update
-                .Set(u => u.UserName, updatedName)
-                .Set(u => u.UserAge, updatedAge);
-            _userCollection.UpdateOne(filter, update);
         }
 
         // Удаление постов или комментариев (Delete):
@@ -100,7 +82,7 @@ namespace Twitter
         public void DeleteAllPosts()
         {
             _postCollection.DeleteMany(_ => true);
+            //_postCollection.DeleteMany(Builders<Post>.Filter.Empty);
         }
-
     }
 }
